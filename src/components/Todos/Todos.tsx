@@ -59,6 +59,8 @@ const Todos: FC = () => {
         setTodos(todos => todos.filter(todo => !todo.completed))
     }
 
+    const itemsLeft = todos.filter(todo => !todo.completed);
+
     return (
         <div className={styles.todosContainer}>
             <h1>todos</h1>
@@ -66,7 +68,7 @@ const Todos: FC = () => {
                 <TodoForm todos={filteredTodos} onAddTodo={addTodoHandler} />
                 <TodosList todos={filteredTodos} onToggle={toggleHandler} />
                 <footer>
-                    <span>{filteredTodos.length} items left</span>
+                    <span>{itemsLeft.length} items left</span>
                     <div>
                         <button
                             className={filterType === 'All' ? styles.focus : ''}
